@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Expense Tracker</a>
+                <form class="d-flex" action="/dashboard">
+                    <button class="btn btn-outline-success" type="submit">Dashboard</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="d-flex align-items-center flex-column">
+        <h1>Update Expense</h1>
+        <div class="w-75">
+            <% data.forEach((element)=>{ %>
+            <form action="/updateData/<%= element._id %>" method="post">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Expense Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<%= element.name %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="amount" class="form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount" placeholder="<%= element.amount %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date:</label>
+                        <input type="date" class="form-control" id="date" name="date" value="<%= element.date %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description:</label>
+                        <input type="text" class="form-control" id="description" name="description" value="<%= element.description %>">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="/showExpense"><button type="button" class="btn btn-primary">Back</button></a>
+                    <% }) %>
+            </form>
+        </div>
+    </div>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

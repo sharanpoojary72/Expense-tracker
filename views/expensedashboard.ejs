@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="container">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Expense Tracker</a>
+            <div class="navbar-nav ms-auto gap-2">
+                <form class="d-flex" action="/dashboard">
+                    <button class="btn btn-outline-success" type="submit">Dashboard</button>
+                </form>
+                <form class="d-flex" action="/logout">
+                    <button class="btn btn-outline-danger" type="submit">Log Out</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </nav>
+    <div class="text-center">
+        <h1>Expense List</h1>
+    </div>
+    <div class="card shadow">
+        <% data.forEach(element=> { %>
+            <div class="d-flex justify-content-between align-items-center m-1">
+                <ul>
+                    <h4>
+                        <%= element.name %>
+                    </h4>
+                    <p>Added By <%= element.username %></p>
+                    <p><span class="fw-bold">Rs.</span>
+                        <%= element.amount %>
+                    </p>
+                    <p><span class="fw-bold">Date:</span>
+                        <%= element.date %>
+                    </p>
+                    <p><span class="fw-bold">Description:</span>
+                        <%= element.description %>
+                    </p>
+                </ul>
+                <div>
+                    <form action="/updatePage/<%= element._id %>">
+                        <button class="btn btn-info ">Update</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="m-0">
+            <%});%>
+    </div>
+
+
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
